@@ -8,6 +8,8 @@ Agora que você já criou sua conta e está logado ao site, é necessario que vo
 
 
 
+
+
 em seguida clique em "New Channel",  aqui é onde configuraremos nossa API. Marque   as caixinhas ao lado do field 1 e field 2, as outras caixinhas devem estar desabilitadas, se não estiverem, desabilite-as, em seguida renomei o fied 1 para temperatura e o field 2 para umidade, não se esqueça também de colocar um nome bacana para sua API, após esses passos, clique em "Save Channel", no canto inferior esquerdo.
 Na aba "Channels" clique em "My Channels", A API que configuramos deve aparecer aqui, clique nela e você será redirecionado para a uma ama identica abaixo: 
 {footoo}
