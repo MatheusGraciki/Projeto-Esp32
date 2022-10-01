@@ -32,7 +32,23 @@ Clique em library mananger, em seguida clique no +  e adicione a biblioteca DHT 
 
 Com isso feito, nosso código já está apto para funcionar, agora volte até nosso código clicando em "sketch.ino"
 
-Você deve montar o 
+Você deve montar o circuito como na imagem abaixo :
+![image](https://user-images.githubusercontent.com/85004422/193430091-dda05f03-6314-47ee-9f9c-24c7225323a9.png)
+
+Clicando no + você consegue adicionar os mesmos componentes que o meus, deixarei a lista abaixo
+
+# Componentes
+
+- 2 DPDT Relay
+- 1 DHT22
+- 2 Leds
+- 1 Esp32
+ 
+ # Ligação eletrica
+ 
+ sublinharei da mesma cor do fio onde ele deve estar conectado 
+ 
+![Screenshot(3)](https://user-images.githubusercontent.com/85004422/193430630-45ac04f2-b670-480d-9cb6-6f29e792cf3c.png)
 
 
  
