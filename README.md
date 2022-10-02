@@ -1,7 +1,7 @@
 <h1 align="center">Captura de dados do ambiente</h1>
 
-## Descrição do Projeto
-<p align="center">O Intuito deste projeto é entender um pouco mais sobre IOT, criamos um circuito que  é capaz de medir a temperatura e umidade através de um sensor e enviamos estes dado para uma API, onde é possivél monitorar em tempo real a entrada de dados através de um gráfico</p>
+# Descrição do Projeto
+<p align="center">O Intuito deste projeto é entender um pouco mais sobre IOT, criamos um circuito que  é capaz de medir a temperatura e umidade através de um sensor e enviamos estes dados para uma API, onde é possivél monitorar em tempo real a entrada de dados através de um gráfico</p>
 
 Tabela de conteúdos
 =================
@@ -15,7 +15,7 @@ Tabela de conteúdos
 </p>
 
 
-# Para que serve o ThingSpeak
+# Para que serve o ThingSpeak?
 
 Thingspeak é uma plataforma que recebe dados de forma remota, esses dados devem estar conectados a internet, pois enviamos os dados através das requisições HTPP e MQTT, é possivel acompanhar a chegada dos dados em tempo real atrávés de um gráfico  pelo site 
 
