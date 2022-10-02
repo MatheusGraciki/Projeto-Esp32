@@ -44,11 +44,8 @@ Clicando no + você consegue adicionar os mesmos componentes que o meus, deixare
 - 2 Leds
 - 1 Esp32
  
- # Ligação eletrica
+ # Ligação da fiaç
  
- sublinharei da mesma cor do fio onde ele deve estar conectado 
- 
-![Screenshot(3)](https://user-images.githubusercontent.com/85004422/193430630-45ac04f2-b670-480d-9cb6-6f29e792cf3c.png)
-
+ ![image](https://user-images.githubusercontent.com/85004422/193433414-3b6e0040-c85f-44ab-a743-b779394c0b85.png)
 
  
