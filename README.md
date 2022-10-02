@@ -1,6 +1,26 @@
-Thingspeak é uma plataforma que recebe dados de forma remota, esses dados devem estar conectados a internet, pois enviamos os dados através das requisições HTPP e MQTT
+<h1 align="center">Captura de dados do ambiente</h1>
 
-Como configurar e utilizar o Thingspeak ?
+## Descrição do Projeto
+<p align="center">O Intuito deste projeto é entender um pouco mais sobre IOT, criamos um circuito que  é capaz de medir a temperatura e umidade através de um sensor e enviamos este dado para uma API, onde é possivél monitorar em tempo real a entrada de dados através de um gráfico</p>
+
+Tabela de conteúdos
+=================
+<p align="center">
+ <a href="#para-que-serve-o-thingspeak"> Utilidade da plataforma</a> •
+ <a href="#configurando-e-utilizando-o-thingspeak">Configurando a API</a> • 
+ <a href="#deploy-e-configuração-do-código">Deploy e Código</a> • 
+ <a href="#componentes">Componentes</a> • 
+ <a href="#ligação-da-fiação">Fiação</a> • 
+ <a href="#autores">Autores</a>
+</p>
+
+
+# Para que serve o ThingSpeak
+
+Thingspeak é uma plataforma que recebe dados de forma remota, esses dados devem estar conectados a internet, pois enviamos os dados através das requisições HTPP e MQTT, é possivel acompanhar a chegada dos dados em tempo real atrávés de um gráfico  pelo site 
+
+# Configurando e utilizando o Thingspeak 
+
 Primeiramente você deve criar sua conta, utilize o link abaixo para isso:
 https://thingspeak.com/login?skipSSOCheck=true
 
@@ -23,19 +43,21 @@ Ainda dentro de sua api, você deve clicar na aba "API KEYS", aqui existem os ti
 
 ![image](https://user-images.githubusercontent.com/85004422/193429527-ee8c0582-dee1-4024-b6db-388305f87cde.png)
 
-
-Agora iremoos configurar nossa esp32, ligar os leds, conectar o sensor ,os relés e   utilizar o codigo desenvolvido acima, copie o código e entre no link abaixo :
+# Deploy e configuração do código 
+Copiei sua "Write API key" e acesse o link:
 https://wokwi.com/projects/343649470761665106
+
+Cole sua "Write API key" onde está marcado em amarelo, atente-se em não apagar o "&", caso contrário o códio não funcionará.
+![image](https://user-images.githubusercontent.com/85004422/193458795-a04b24b1-da34-4dc3-be13-42605cb8ac76.png)
 
 Clique em library mananger, em seguida clique no +  e adicione a biblioteca DHT sensor library for Espx
 ![image](https://user-images.githubusercontent.com/85004422/193429790-60d9e9ae-621a-402c-b6af-093195386d03.png)
 
-Com isso feito, nosso código já está apto para funcionar, agora volte até nosso código clicando em "sketch.ino"
 
-Você deve montar o circuito como na imagem abaixo :
+se você desejar montar o circuito sozinho, siga a imagem abaixo, utilize os componentes e faça a  conexão da fiação  :
 ![image](https://user-images.githubusercontent.com/85004422/193430091-dda05f03-6314-47ee-9f9c-24c7225323a9.png)
 
-Clicando no + você consegue adicionar os mesmos componentes que o meus, deixarei a lista abaixo
+Clicando no + você consegue adicionar os componentes listados abaixo
 
 # Componentes
 
@@ -44,8 +66,22 @@ Clicando no + você consegue adicionar os mesmos componentes que o meus, deixare
 - 2 Leds
 - 1 Esp32
  
- # Ligação da fiaç
+ # Ligação da fiação
  
  ![image](https://user-images.githubusercontent.com/85004422/193433414-3b6e0040-c85f-44ab-a743-b779394c0b85.png)
-
  
+Com isso feito, nosso código já está apto para funcionar, agora volte até nosso código clicando em "sketch.ino" e clique em iniciar, agora é possivél ver o retorno da temperatura tanto no terminal, quanto no grafico da api
+
+![image](https://user-images.githubusercontent.com/85004422/193459134-e4c8d180-7cc1-42d4-bf4a-6e9420be1562.png)
+
+Se o led verde acender, o request está sendo feito com sucesso, caso o led vermelho acenda, algum erro está impossibilitando o request
+
+![image](https://user-images.githubusercontent.com/85004422/193459301-bcd7480b-c402-49da-a288-f0ec64f4fb42.png)
+
+
+## Autores
+Feito com ❤️ por Matheus Graciki e Victória Fortes 👋🏽 Entre em contato!
+
+[![Linkedin Badge](https://img.shields.io/badge/-Matheus-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/matheus-graciki-303287209/)](https://www.linkedin.com/in/matheus-graciki-303287209/) 
+[![Linkedin Badge](https://img.shields.io/badge/-Victória-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/vict%C3%B3ria-fortes-848767180/)](https://www.linkedin.com/in/vict%C3%B3ria-fortes-848767180/) 
+[![Gmail Badge](https://img.shields.io/badge/-dev.matheusgraciki@outlook.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:dev.matheusgraciki@outlook.com)](mailto:dev.matheusgraciki@outlook.com)
