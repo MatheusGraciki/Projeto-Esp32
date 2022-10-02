@@ -8,7 +8,7 @@ const String url = "https://api.thingspeak.com/update?api_key=0OOTEQH9IUW733XE&"
 HTTPClient http;
 void setup() {
   Serial.begin(115200);
-  Serial.println("iniciando setup");
+  Serial.println("starting setup");
   // leds will be start turned off
   digitalWrite(23, LOW);
   digitalWrite(22, LOW);
@@ -21,11 +21,11 @@ void setup() {
 
   while(WiFi.status() != WL_CONNECTED){
     delay(500);
-    Serial.println("Conecting to WiFi");
+    Serial.println("Connecting to WiFi");
   }
 
 
-  Serial.println("Finalizando setup");
+  Serial.println("finalizing setup");
 
 
 }
@@ -34,12 +34,12 @@ void loop() {
  
   delay(1000);
   // get temperature and humidity
-  float temperatura = dhtSensor.getTemperature();
-  float umidade = dhtSensor.getHumidity();
-  Serial.println("Temperatura:" + String(temperatura) + "°" + " Umidade:" + String(umidade)+"%");
+  float temperature = dhtSensor.getTemperature();
+  float humidity = dhtSensor.getHumidity();
+  Serial.println("Temperature:" + String(temperature) + "°" + " Humidity:" + String(humidity)+"%");
   
   // Post temperature and humidity to api
-  String path = url + "field1=" + String(temperatura) + "&field2=" + String(umidade);
+  String path = url + "field1=" + String(temperature) + "&field2=" + String(humidity);
   http.begin(path);
   int httpCode = http.GET();
   String payload = http.getString();
@@ -50,15 +50,15 @@ void loop() {
 
  
 //  if  the request return a status 404 or other error, then the red led will turn on
-  if(httpCode =! 200 ){
-    digitalWrite(23, HIGH);
-    digitalWrite(22, LOW);
-  }
-
-  // if  the request return a  status 200  or other error, then the green led will turn on
-  else{
+  if(httpCode != 200 ){
     digitalWrite(23, LOW);
     digitalWrite(22, HIGH);
+  }
+
+  // if  the request return a  status 200, then the green led will turn on
+  else{
+    digitalWrite(23, HIGH);
+    digitalWrite(22, LOW);
   }
 
  
