@@ -1,13 +1,26 @@
 #include <DHTesp.h>
 DHTesp dhtSensor;
 #include "WiFi.h"
-#include <HTTPClient.h>
+#include "PubSubClient.h"
+#include <Arduino_JSON.h>
+
 // setting the Wifi
 const char* ssid = "Wokwi-GUEST";
 const char* password = "";
 
-const String url = "https://api.thingspeak.com/update?api_key=0OOTEQH9IUW733XE&";
-HTTPClient http;
+// Mqtt config
+WiFiClient espClient;
+PubSubClient mqttClient(espClient);
+
+int port = 1883;
+const char* server = "broker.hivemq.com";
+const char* topic = "temperature";
+
+
+// JSON config
+
+JSONVar data;
+
 void setup() {
   Serial.begin(115200);
   Serial.println("starting setup");
@@ -25,12 +38,23 @@ void setup() {
  
 
   while(WiFi.status() != WL_CONNECTED){
-    delay(500);
+    delay(1000);
     Serial.println("Connecting to WiFi");
   }
+  Serial.println("Connected to WiFi");
 
 
-  Serial.println("finalizing setup");
+  // Connecting to broker
+  mqttClient.setServer(server, port); 
+  char* clientId = "Client_for_test_of_sa03";
+  mqttClient.connect(clientId);
+  mqttClient.subscribe(topic);
+
+  while(!mqttClient.connected()){
+    delay(500);
+    Serial.println("Connecting to broker...");
+  }
+  Serial.println("Connected to broker");
 
 
 }
@@ -42,36 +66,30 @@ void loop() {
   float temperature = dhtSensor.getTemperature();
   float humidity = dhtSensor.getHumidity();
   Serial.println("Temperature:" + String(temperature) + "°" + " Humidity:" + String(humidity)+"%");
+
+  // Transform json data in string 
+  data["temperatura"] = temperature;
+  data["umidade"] = humidity;
+  String jsonString = JSON.stringify(data);
+
+  // sending the temperature and humidity to broker
+  boolean msg = ("empty");
+  msg = mqttClient.publish(topic, jsonString.c_str());
   
-  // Post temperature and humidity to api
-  String path = url + "field1=" + String(temperature) + "&field2=" + String(humidity);
-  http.begin(path);
-  int httpCode = http.GET();
-  String payload = http.getString();
 
-  // Status of request send to API
-    // Serial.println("HttpCode:" + String(httpCode));
-    
-  // the object recived of the API
-    // Serial.println("Payload:" + payload);
-
-
- 
-//  If  the request return a status 404 or other error, then the red led will turn on
-  if(httpCode != 200 ){
-    digitalWrite(23, LOW);
+  // validation of msg status
+  if(!msg){
+    Serial.println("Ocorreu um erro durante o envio da mensagem");
     digitalWrite(22, HIGH);
-  }
-
-  // If  the request return a  status 200, then the green led will turn on
-  else{
-    digitalWrite(23, HIGH);
+    delay(500);
     digitalWrite(22, LOW);
   }
-
+  else{
+    Serial.println("Mensagem enviada com sucesso");
+    digitalWrite(23, HIGH);
+    delay(500);
+    digitalWrite(23, LOW);
+  }
+  delay(500);
  
-
-  
-  
 }
-  
